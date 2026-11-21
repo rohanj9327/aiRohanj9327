@@ -1,15 +1,10 @@
-import os
-from dotenv import load_dotenv
-from langchain_openai import ChatOpenAI
+# from dotenv import load_dotenv
+# from langchain_openai import OpenAI
 
-load_dotenv()
+# load_dotenv(override=True)
 
-llm = ChatOpenAI(
-    model="openai/gpt-4o-mini",
-    temperature=0,
-    api_key=os.getenv("OPENAI_API_KEY"),  # or OPENROUTER_API_KEY
-    base_url="https://openrouter.ai/api/v1",
-)
+# llm = OpenAI(model="gpt-3.5-turbo-instruct", temperature=0)
 
-response = llm.invoke("What is the capital of France?")
-print(response.content)
+# print(llm.invoke("What is the capital of France?"))
+
+#open ai shut all old model so no way to use it
