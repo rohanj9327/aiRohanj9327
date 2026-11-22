@@ -14,6 +14,7 @@ from pydantic import BaseModel, Field
 
 tavily = TavilyClient()
 
+
 class Source(BaseModel):
     """Schema for a source used by the agent"""
 
@@ -28,11 +29,12 @@ class AgentResponse(BaseModel):
         default_factory=list, description="List of sources used to generate the answer"
     )
 
+
 @tool
 def search(query: str) -> str:
     """
     Tool that searches the web for information
-    
+
     Args:
         query: The query to search for
     Returns:
@@ -40,7 +42,8 @@ def search(query: str) -> str:
     """
     print(f"Searching the web for: {query}")
     return "Pune weather is sunny"
-    
+
+
 llm = ChatGoogleGenerativeAI(model="gemini-3.8-flash", temperature=0)
 tools = [TavilySearch()]
 agent = create_agent(model=llm, tools=tools, response_format=AgentResponse)
@@ -48,8 +51,15 @@ agent = create_agent(model=llm, tools=tools, response_format=AgentResponse)
 
 def main():
     print("Hello from langchain-course!")
-    result = agent.invoke({"messages":HumanMessage(content="search for 3 job postings for an ai engineer using langchain in the bay area on linkedin and list their details")})
+    result = agent.invoke(
+        {
+            "messages": HumanMessage(
+                content="search for 3 job postings for an ai engineer using langchain in the bay area on linkedin and list their details"
+            )
+        }
+    )
     print(result)
+
 
 if __name__ == "__main__":
     main()
