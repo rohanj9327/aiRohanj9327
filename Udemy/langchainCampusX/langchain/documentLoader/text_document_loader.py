@@ -1,4 +1,3 @@
-from tempfile import template
 from langchain_community.document_loaders import TextLoader
 from dotenv import load_dotenv
 from langchain_google_genai import ChatGoogleGenerativeAI
