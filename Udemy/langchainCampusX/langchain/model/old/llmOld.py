@@ -7,4 +7,4 @@
 
 # print(llm.invoke("What is the capital of France?"))
 
-#open ai shut all old model so no way to use it
+# open ai shut all old model so no way to use it
