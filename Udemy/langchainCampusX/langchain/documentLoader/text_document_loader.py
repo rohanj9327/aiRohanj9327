@@ -9,20 +9,23 @@ load_dotenv()
 
 model = ChatGoogleGenerativeAI(model="gemini-3.5-flash")
 
-prompt = PromptTemplate(template='wite a very short summary in 3 points for {doc}',input_variable= ['doc'])
+prompt = PromptTemplate(
+    template="wite a very short summary in 3 points for {doc}", input_variable=["doc"]
+)
 
-loader = TextLoader('/Volumes/rohan/RohuMain/Projects/Technical/Artificial Intelligence/Trainings/aiRohanj9327/Udemy/langchainCampusX/langchain/documentLoader/cricket.txt', encoding='utf-8')
+loader = TextLoader(
+    "/Volumes/rohan/RohuMain/Projects/Technical/Artificial Intelligence/Trainings/aiRohanj9327/Udemy/langchainCampusX/langchain/documentLoader/cricket.txt",
+    encoding="utf-8",
+)
 
 doc = loader.load()
 
-#print(doc)
+# print(doc)
 
 parser = StrOutputParser()
 
 chain = prompt | model | parser
 
-result = chain.invoke({'doc' : doc[0].page_content})
+result = chain.invoke({"doc": doc[0].page_content})
 
 print(result)
-
-
